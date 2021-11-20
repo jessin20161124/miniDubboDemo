@@ -1,0 +1,26 @@
+spring:
+  mvc:
+    servlet:
+      path: /practice
+      load-on-startup: 1
+server:
+  port: 9999
+logging:
+  exception-conversion-word:
+
+mini-dubbo:
+  package-path: com.example.demo
+  registry: "1.15.130.58:2181"
+
+management:
+  endpoints:
+    web:
+      #      base-path: /hello
+      exposure:
+        #启动所有15个endpoint，默认只开启两个endpoint，也就是health和info
+        #访问：http://localhost:9999/practice/actuator
+        include: "*"
+#  server:
+#    port: 8888
+
+
