@@ -29,7 +29,7 @@ public class HelloController {
     private UserService userService;
 
     /**
-     * http://localhost:9999/practice/helloParam
+     * http://localhost:9999/practice/hello
      *
      * @return
      */
