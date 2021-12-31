@@ -46,7 +46,7 @@ mvn package
 
 &nbsp;&nbsp;&nbsp;&nbsp;启动第一个provider实例： 默认9999 http端口，20880 miniDubbo端口
 ```
- java -Dmini-dubbo.type=server -Dcatalina.base=/home/ubuntu/program/java/miniDubboDemo/tomcat1 -Dpublic.ip=1.15.130.58  -jar target/demo-0.0.1-SNAPSHOT.jar
+ java -Dmini-dubbo.type=server -Dcatalina.base=./tomcat1 -Dpublic.ip=1.15.130.58  -jar target/demo-0.0.1-SNAPSHOT.jar
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/77d06b23dcbe40d4b6ba62a7a27afecb.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAYWNfZGFvX2Rp,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
 
@@ -54,7 +54,7 @@ mvn package
 
 
 ```
- java -Dmini-dubbo.type=server -Dcatalina.base=/home/ubuntu/program/java/miniDubboDemo/tomcat2 -Dserver.port=9998 -Dmini-dubbo.port=20881 -Dpublic.ip=1.15.130.58  -jar target/demo-0.0.1-SNAPSHOT.jar
+ java -Dmini-dubbo.type=server -Dcatalina.base=./tomcat2 -Dserver.port=9998 -Dmini-dubbo.port=20881 -Dpublic.ip=1.15.130.58  -jar target/demo-0.0.1-SNAPSHOT.jar
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/654dee79e2fc498189fda23acc08a0ef.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAYWNfZGFvX2Rp,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
 
@@ -62,7 +62,7 @@ mvn package
 #### 1.6 本地开启客户端进行调用
 &nbsp;&nbsp;&nbsp;&nbsp;在本地启动客户端，并与两个provider建立连接：
 ```
-java -Dmini-dubbo.type=client -Dcatalina.base=./tomcat3  -Dserver.port=9997 -jar target/demo-0.0.1-SNAPSHOT.jar```
+java -Dmini-dubbo.type=client -Dcatalina.base=./tomcat3  -Dserver.port=9997 -jar target/demo-0.0.1-SNAPSHOT.jar
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e0ab1506e7294c6dba171134664b7544.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBAYWNfZGFvX2Rp,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
 

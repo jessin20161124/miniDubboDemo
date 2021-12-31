@@ -13,9 +13,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  *
  * 默认9999，20880端口
- * java -Dcatalina.base=/home/ubuntu/program/java/miniDubboDemo/tomcat1 -Dpublic.ip=1.15.130.58  -jar target/demo-0.0.1-SNAPSHOT.jar
+ * server:
+ * java -Dmini-dubbo.type=server -Dcatalina.base=/home/ubuntu/program/java/miniDubboDemo/tomcat1 -Dpublic.ip=1.15.130.58  -jar target/demo-0.0.1-SNAPSHOT.jar
  *
- * java -Dcatalina.base=/home/ubuntu/program/java/miniDubboDemo/tomcat2 -Dserver.port=9998 -Dmini-dubbo.port=20881 -Dpublic.ip=1.15.130.58  -jar target/demo-0.0.1-SNAPSHOT.jar
+ * client
+ * java -Dmini-dubbo.type=client -Dcatalina.base=./tomcat3  -Dserver.port=9997 -jar target/demo-0.0.1-SNAPSHOT.jar```
  */
 @SpringBootApplication
 public class DemoApplication {
