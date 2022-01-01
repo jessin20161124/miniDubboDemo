@@ -4,10 +4,12 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.jessin.practice.dubbo.model.AppInfo;
 import com.jessin.practice.dubbo.model.BizType;
+import com.jessin.practice.dubbo.model.DomainInfo;
 import com.jessin.practice.dubbo.model.Result;
 import com.jessin.practice.dubbo.model.User;
 import com.jessin.practice.dubbo.model.UserParam;
 import com.jessin.practice.dubbo.processor.Reference;
+import com.jessin.practice.dubbo.service.DomainService;
 import com.jessin.practice.dubbo.service.UserService;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,10 +35,11 @@ public class HelloController {
     @Reference(group = "myGroup")
     private UserService userService;
 
+    @Reference(group = "myGroup", version = "1.0.2")
+    private DomainService domainService;
+
     /**
      * http://localhost:9999/practice/hello
-     *
-     * @return
      */
     @RequestMapping("/hello")
     public Object hello(UserParam userParam, @RequestParam int type) {
@@ -206,5 +209,13 @@ public class HelloController {
             return ret;
         }
         return null;
+    }
+
+    /**
+     * http://localhost:9999/practice/domain?id=321&name=laosiji
+     */
+    @RequestMapping("/domain")
+    public DomainInfo domain(UserParam userParam) {
+        return domainService.queryAssociatedDomain(userParam);
     }
 }
