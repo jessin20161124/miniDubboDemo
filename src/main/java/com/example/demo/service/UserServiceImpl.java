@@ -13,6 +13,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +28,8 @@ import org.slf4j.LoggerFactory;
 @Service(group="myGroup")
 public class UserServiceImpl implements UserService {
     private Logger log = LoggerFactory.getLogger(getClass());
+
+    private Executor executor = new ThreadPoolExecutor(3, 3, 1, TimeUnit.MINUTES, new LinkedBlockingDeque<>(100));
 
     @Override
     public User getException() {
@@ -57,7 +64,6 @@ public class UserServiceImpl implements UserService {
         user.setAge(age);
         user.setNote("测试带参数int");
         return user;
-
     }
 
     @Override
@@ -238,5 +244,73 @@ public class UserServiceImpl implements UserService {
         result.setData(user);
         result.setErrorMsg(bizType.getDesc());
         return result;
+    }
+
+    @Override
+    public CompletableFuture getReturn7(int age) {
+        return CompletableFuture.supplyAsync(() -> {
+            sleep(2000);
+            User user = new User();
+            user.setId(2L);
+            user.setName("小红");
+            user.setAge(age);
+            user.setNote("getReturn7");
+            return user;
+        }, executor);
+    }
+
+    private void sleep(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    @Override
+    public CompletableFuture<User> getReturn8(int age) {
+        return CompletableFuture.supplyAsync(() -> {
+            sleep(2000);
+            User user = new User();
+            user.setId(2L);
+            user.setName("小红");
+            user.setAge(age);
+            user.setNote("getReturn8");
+            return user;
+        }, executor);
+
+    }
+
+    @Override
+    public CompletableFuture<Result<User>> getReturn9(int age) {
+        return CompletableFuture.supplyAsync(() -> {
+            sleep(2000);
+            User user = new User();
+            user.setId(2L);
+            user.setName("小红");
+            user.setAge(age);
+            user.setNote("getReturn9");
+
+            Result<User> result = new Result<>();
+            result.setData(user);
+            result.setCode(1);
+            return result;
+        }, executor);
+    }
+
+    @Override
+    public CompletableFuture<Result<User>> getReturnTimeout(int age) {
+        return CompletableFuture.supplyAsync(() -> {
+            sleep(10 * 1000);
+            User user = new User();
+            user.setId(2L);
+            user.setName("小红");
+            user.setAge(age);
+            user.setNote("getReturnTimeout");
+
+            Result<User> result = new Result<>();
+            result.setData(user);
+            result.setCode(1);
+            return result;
+        }, executor);
     }
 }

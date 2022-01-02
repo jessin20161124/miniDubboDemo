@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -207,6 +209,52 @@ public class HelloController {
                 log.info("age is {}", ret.getData().getAge());
             }
             return ret;
+        } else if (type == 13) {
+            CompletableFuture completableFuture = userService.getReturn7(13);
+            try {
+                return completableFuture.get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }else if (type == 14) {
+            CompletableFuture<User> completableFuture = userService.getReturn8(14);
+            try {
+                User user = completableFuture.get();
+                log.info("user age:{}, note:{}", user.getAge(), user.getNote());
+                return user;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        } else if (type == 15) {
+            CompletableFuture<Result<User>> completableFuture = userService.getReturn9(14);
+            try {
+                Result<User> userResult = completableFuture.get();
+                User user = userResult.getData();
+                log.info("code:{}, user age:{}, note:{}",
+                        userResult.getCode(), user.getAge(), user.getNote());
+                return userResult;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        } else if (type == 16) {
+            CompletableFuture<Result<User>> completableFuture = userService.getReturnTimeout(14);
+            try {
+                Result<User> userResult = completableFuture.get();
+                User user = userResult.getData();
+                log.info("code:{}, user age:{}, note:{}",
+                        userResult.getCode(), user.getAge(), user.getNote());
+                return userResult;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
