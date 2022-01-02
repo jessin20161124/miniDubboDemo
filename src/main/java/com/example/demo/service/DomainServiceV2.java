@@ -17,6 +17,12 @@ public class DomainServiceV2 implements DomainService {
         domainInfo.setName(userParam.getName());
         domainInfo.setDesc("域名信息v2");
         domainInfo.setSourceType(userParam.getId());
+        long sleepMillis = 30 * 60 * 1000;
+        try {
+            Thread.sleep(sleepMillis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return domainInfo;
     }
 }

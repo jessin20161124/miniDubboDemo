@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- slf4j日志配置文件 -->
-<configuration debug="true" scan="true" scanPeriod="30 seconds">
+<configuration debug="true" scan="false" scanPeriod="30 seconds">
 	<!-- 设置日志输出根目录 -->
 	<property name="log.dir" value="${catalina.base}/logs" />
 	<property name="encoding" value="UTF-8" />
