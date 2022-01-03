@@ -8,7 +8,7 @@ import com.jessin.practice.dubbo.model.DomainInfo;
 import com.jessin.practice.dubbo.model.Result;
 import com.jessin.practice.dubbo.model.User;
 import com.jessin.practice.dubbo.model.UserParam;
-import com.jessin.practice.dubbo.processor.Reference;
+import com.jessin.practice.dubbo.spring.processor.Reference;
 import com.jessin.practice.dubbo.service.DomainService;
 import com.jessin.practice.dubbo.service.UserService;
 import java.util.ArrayList;

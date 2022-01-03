@@ -7,7 +7,7 @@ import com.jessin.practice.dubbo.model.BizType;
 import com.jessin.practice.dubbo.model.Result;
 import com.jessin.practice.dubbo.model.User;
 import com.jessin.practice.dubbo.model.UserParam;
-import com.jessin.practice.dubbo.processor.Service;
+import com.jessin.practice.dubbo.spring.processor.Service;
 import com.jessin.practice.dubbo.service.UserService;
 import java.util.ArrayList;
 import java.util.HashMap;

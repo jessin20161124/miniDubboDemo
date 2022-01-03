@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import com.jessin.practice.dubbo.model.DomainInfo;
 import com.jessin.practice.dubbo.model.UserParam;
-import com.jessin.practice.dubbo.processor.Service;
+import com.jessin.practice.dubbo.spring.processor.Service;
 import com.jessin.practice.dubbo.service.DomainService;
 
 /**
