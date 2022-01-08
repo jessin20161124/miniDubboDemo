@@ -41,7 +41,7 @@ public class HelloController {
     private DomainService domainService;
 
     /**
-     * http://localhost:9999/practice/hello
+     * http://localhost:9999/practice/hello?type=7
      */
     @RequestMapping("/hello")
     public Object hello(UserParam userParam, @RequestParam int type) {
@@ -97,7 +97,7 @@ public class HelloController {
                 });
             }
             return ret;
-        }else if (type == 8) {
+        } else if (type == 8) {
             AppInfo<User> userAppInfo = new AppInfo<>();
             userAppInfo.setAppId(1233);
             userAppInfo.setAppName("laoge");
@@ -117,7 +117,7 @@ public class HelloController {
                 });
             }
             return ret;
-        }else if (type == 9) {
+        } else if (type == 9) {
             AppInfo<User> userAppInfo1 = new AppInfo<>();
             userAppInfo1.setAppId(1233);
             userAppInfo1.setAppName("laoge");
@@ -147,7 +147,7 @@ public class HelloController {
             }
             return ret;
 
-        }else if (type == 10) {
+        } else if (type == 10) {
             UserParam user2 = new UserParam();
             user2.setId(1132);
             user2.setName("hello");
@@ -165,7 +165,7 @@ public class HelloController {
                 log.info("data: {}, code:{}", ret.getData(), ret.getCode());
             }
             return ret;
-        }else if (type == 11) {
+        } else if (type == 11) {
             UserParam user2 = new UserParam();
             user2.setId(1132);
             user2.setName("hello");
@@ -186,7 +186,7 @@ public class HelloController {
                 }
             }
             return ret;
-        }else if (type == 12) {
+        } else if (type == 12) {
             AppInfo<User> userAppInfo1 = new AppInfo<>();
             userAppInfo1.setAppId(1233);
             userAppInfo1.setAppName("laoge");
@@ -218,7 +218,7 @@ public class HelloController {
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
-        }else if (type == 14) {
+        } else if (type == 14) {
             CompletableFuture<User> completableFuture = userService.getReturn8(14);
             try {
                 User user = completableFuture.get();
@@ -253,7 +253,7 @@ public class HelloController {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
         return null;
