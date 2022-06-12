@@ -313,4 +313,24 @@ public class UserServiceImpl implements UserService {
             return result;
         }, executor);
     }
+
+    @Override
+    public int getPrimitiveInt(int i) {
+        return 0;
+    }
+
+    @Override
+    public Integer getPrimitiveInteger(int i) {
+        return null;
+    }
+
+    @Override
+    public BizType getEnum(int i) {
+        return null;
+    }
+
+    @Override
+    public List<User> getList(int i) {
+        return null;
+    }
 }
